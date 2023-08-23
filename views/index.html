@@ -6,25 +6,43 @@
     <meta name="theme-color" content="#000000" />
     <title>demo</title>
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <style>
+       #prompt-div {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+    font-size: 50px;
+    background-image: linear-gradient(to right, rgba(255, 0, 255, 0.233), rgb(8, 120, 165));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-align: center;
+  }
+  #prompt {
+    background-color: transparent;
+    border: 0px solid;
+    height: 1px;
+    width: 10px;
+    color: #CCC;
+  }
+  *:focus {
+      outline: none;
+  }
+    </style>
   </head>
-  <body>
-    
-    <div class="container">
-
+  <body style="background-color: #efefef;">
+    <input type="text" id="prompt"/>
+    <div class="container" style="background-color: #efefef; text-align: center; ">
         
-        <h1 class="mt-5" style="color:#f7acf7">오늘의 몸풀기를 추천해줘</h1>
-        <img class="mt-5 mr-5" src="/assets/img/happy.gif" width="100" style="border-radius: 10px;">
-        <img class="mt-5 mr-5" src="/assets/img/sad.gif" width="100" style="border-radius: 10px;">
-        <img class="mt-5" src="/assets/img/chrismas.gif" width="100" style="border-radius: 10px;"><br>
-        <img class="mt-5 mr-5" src="/assets/img/happy.gif" width="100" style="border-radius: 10px;">
-        <img class="mt-5 mr-5" src="/assets/img/sad.gif" width="100" style="border-radius: 10px;">
-        <img class="mt-5" src="/assets/img/chrismas.gif" width="100" style="border-radius: 10px;"><br>
-        <img class="mt-5 mr-5" src="/assets/img/happy.gif" width="100" style="border-radius: 10px;">
-        <img class="mt-5 mr-5" src="/assets/img/sad.gif" width="100" style="border-radius: 10px;">
-        <img class="mt-5" src="/assets/img/chrismas.gif" width="100" style="border-radius: 10px;"><br>
-        <img class="mt-5 mr-5" src="/assets/img/happy.gif" width="100" style="border-radius: 10px;">
-        <img class="mt-5 mr-5" src="/assets/img/sad.gif" width="100" style="border-radius: 10px;">
-        <img class="mt-5" src="/assets/img/chrismas.gif" width="100" style="border-radius: 10px;"><br>
+      
+      <div id="prompt-div" style="position: absolute;
+
+      top:10px; padding:20px; font-size: 35px; width: 100%; z-index: 99;" onclick="divclick()"></div>
+      <div style="z-index: 99; margin-top: 30px;">
+        <a href="/pushup"><img class="mt-5" src="/assets/img/pushup.png" width="180" height="200" style="border-radius: 10px; margin-right: 10px;"></a>
+        <a href="/arm"><img class="mt-5" src="/assets/img/arm.png" width="180" height="200" style="border-radius: 10px;"></a>
+        <a href="neck"><img class="mt-5" src="/assets/img/neck.png" width="180" height="200" style="border-radius: 10px;  margin-right: 10px;"></a>
+        <a href="squart"><img class="mt-5" src="/assets/img/squart.png" width="180" height="200" style="border-radius: 10px;"></a>
+      </div>
 
         <a href="add">
         <div style="
@@ -40,6 +58,20 @@
     <script src="/assets/jquery/jquery.min.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script>
+
+      function divclick() {
+       $('#prompt').focus();
+      }
+      function update() {
+        var text = $('#prompt').val();
+        if(text == '') {
+          text = "동작을 검색해보세요."
+        }
+        $('#prompt-div').html(text);
+      }
+      setInterval(()=>{
+        update();
+      }, 100);
 
     </script>
   </body>
